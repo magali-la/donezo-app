@@ -21,3 +21,8 @@
 html {
   @apply font-josefin;
 }
+
+/* input type text */
+input[type="text"], input[type="date"], textarea {
+  @apply bg-cream rounded-2xl p-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-steel;
+}
