@@ -13,7 +13,14 @@ export interface Task {
 
 // interface for list, an array of Tasks and callback functions
 export interface TaskListProps {
-    tasks: Task[];
+    tasks?: Task[];
+    onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
+    onDelete: (taskId: string) => void;
+}
+
+// interface for props for task item - pass the same callbacks to task item which is nested in task list
+export interface TaskItemProps {
+    task: Task;
     onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
     onDelete: (taskId: string) => void;
 }

@@ -1,6 +1,7 @@
-import type { Task } from "../../types"
+import type { Task, TaskListProps } from "../../types"
+import TaskItem from "./TaskItem";
 
-export default function TaskList() {
+export default function TaskList({ onStatusChange, onDelete}: TaskListProps) {
     // define dummy data for test
     const dummyTasks: Task[] = [
         {
@@ -18,23 +19,32 @@ export default function TaskList() {
             status: 'Completed',
             priority: 'low',
             dueDate: '2025-12-17'
+        },
+        {
+            id: '3',
+            title: 'Test task 3',
+            desc: "i'm test 3",
+            status: 'Completed',
+            priority: 'medium',
+            dueDate: '2025-12-17'
         }
     ];
 
     return (
-        <div className="flex flex-col p-4 gap-5">
+        <div className="flex flex-col gap-5 mx-[20vw]">
             {dummyTasks.length !==0 ? (
                 dummyTasks.map((task) => (
-                    <div key={task.id}>
-                        <h3>{task.title}</h3>
-                        <p>{task.desc}</p>
-                        <p>{task.status}</p>
-                        <p>{task.priority}</p>
-                        <p>{task.dueDate}</p>
-                    </div>
+                    // inject each task into the TaskItem component
+                    <TaskItem
+                        // add key for React tracking with task.id
+                        key={task.id}
+                        task={task}
+                        onStatusChange={onStatusChange}
+                        onDelete={onDelete}
+                    />
                 ))
             ) : (
-                <p>no tasks yet</p>
+                <p>No tasks yet. Let's get motivated!</p>
             )}
         </div>
     )
