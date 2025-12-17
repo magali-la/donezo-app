@@ -8,18 +8,25 @@ export default function TaskForm() {
     const [priority, setPriority] = useState<'high' | 'medium' | 'low' | ''>('');
 
     // // function to check every state is not length 0 before adding the task
-    // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    //     event.preventDefault();
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
 
-    //     if (title.length === 0 || ){
-            
-    //     } else {
-
-    //     }
-    // }
+        // use test before dashboard integration for validation
+        if (title.length === 0 || desc.length === 0 || dueDate.length === 0 || priority.length === 0 ){
+            alert('Attention! There are missing fields. Please fill out all fields.')
+            console.log('Error: missing fields');
+        } else {
+            // reset all field state variables to their original
+            setTitle('');
+            setDesc('');
+            setDueDate('');
+            setPriority('');
+            console.log('Submitted task');
+        }
+    }
 
     return (
-        <form className="flex flex-col gap-4 py-8 px-8 md:px-10 sm:w-[50vw] bg-banana rounded-2xl border-3 border-shadow" onSubmit={(event) => event.preventDefault()} aria-label="add a new task to your list">
+        <form className="flex flex-col gap-4 py-8 px-8 md:px-10 sm:w-[50vw] bg-banana rounded-2xl border-3 border-shadow" onSubmit={handleSubmit} aria-label="add a new task to your list">
             <h2 className="text-2xl font-semibold">Add a Task</h2>
             {/* title input */}
             <label htmlFor="taskTitle" className="font-medium">Task Title</label>
