@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TaskForm from "../components/TaskForm/TaskForm";
 import TaskList from "../components/TaskList/TaskList";
-import type { Task } from "../types";
+import type { Task, TaskStatus } from "../types";
 
 export default function Dashboard() {
     // state for tasks list
@@ -13,12 +13,25 @@ export default function Dashboard() {
         setTasks(prevTasks => [...prevTasks, newTask])
     }
 
+    // callbacks for status change and delete
+    function handleStatusChange(taskId: string, newStatus: TaskStatus) {
+        console.log(`Changing status for ${taskId} to ${newStatus}`);
+    }
+
+    function handleDelete(taskId: string) {
+        console.log(`Deleting task: ${taskId}`);
+    }
+
     return (
         <div>
             <TaskForm 
                 addTask={addTask}
             />
-            <TaskList/>
+            <TaskList
+                tasks={tasks}
+                onStatusChange={handleStatusChange}
+                onDelete={handleDelete}
+            />
         </div>
     )
 }

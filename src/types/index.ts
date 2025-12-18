@@ -13,7 +13,7 @@ export interface Task {
 
 // interface for list, an array of Tasks and callback functions
 export interface TaskListProps {
-    tasks?: Task[];
+    tasks: Task[];
     onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
     onDelete: (taskId: string) => void;
 }
