@@ -1,26 +1,41 @@
 import { useState } from "react"
+import type { Task } from "../../types";
 
-export default function TaskForm() {
+export default function TaskForm({addTask}) {
     // states for controlled inputs
     const [title, setTitle] = useState<string>('');
     const [desc, setDesc] = useState<string>('');
     const [dueDate, setDueDate] = useState<string>('');
-    const [priority, setPriority] = useState<'high' | 'medium' | 'low' | ''>('');
+    const [priority, setPriority] = useState<'high' | 'medium' | 'low'| null >(null);
 
     // // function to check every state is not length 0 before adding the task
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         // use test before dashboard integration for validation
-        if (title.length === 0 || desc.length === 0 || dueDate.length === 0 || priority.length === 0 ){
+        if (title.length === 0 || desc.length === 0 || dueDate.length === 0 || priority === null ){
             alert('Attention! There are missing fields. Please fill out all fields.')
             console.log('Error: missing fields');
         } else {
+            // create an object using the task type
+            const newTask: Task = {
+                id: Date.now().toString(),
+                title: title,
+                desc: desc,
+                status: 'Pending',
+                priority: priority,
+                dueDate: dueDate
+            }
+            console.log("New task being added to dashboard list", newTask)
+
+            // add the task via callback function in dashboard
+            addTask(newTask);
+
             // reset all field state variables to their original
             setTitle('');
             setDesc('');
             setDueDate('');
-            setPriority('');
+            setPriority(null);
             console.log('Submitted task');
         }
     }
