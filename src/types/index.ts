@@ -24,3 +24,8 @@ export interface TaskItemProps {
     onStatusChange: (taskId: string, newStatus: TaskStatus) => void;
     onDelete: (taskId: string) => void;
 }
+
+// interface for props for task form - pass callbacks to update tasks array
+export interface TaskFormProps {
+    addTask: (task: Task) => void;
+}

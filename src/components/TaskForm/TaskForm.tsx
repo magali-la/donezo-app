@@ -1,7 +1,7 @@
 import { useState } from "react"
-import type { Task } from "../../types";
+import type { Task, TaskFormProps } from "../../types";
 
-export default function TaskForm({addTask}) {
+export default function TaskForm({addTask}: TaskFormProps) {
     // states for controlled inputs
     const [title, setTitle] = useState<string>('');
     const [desc, setDesc] = useState<string>('');

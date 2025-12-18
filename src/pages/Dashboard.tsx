@@ -8,7 +8,7 @@ export default function Dashboard() {
     const [tasks, setTasks] = useState<Task[]>([]);
 
     // callback for adding task
-    function addTask(newTask: Task){
+    function addTask(newTask: Task) {
         // functional state update
         setTasks(prevTasks => [...prevTasks, newTask])
     }
