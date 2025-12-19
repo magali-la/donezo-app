@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskForm from "../components/TaskForm/TaskForm";
 import TaskList from "../components/TaskList/TaskList";
 import type { Task, TaskStatus } from "../types";
+import { getLocal, setLocal } from "../utils/localStorageUtils";
 
 export default function Dashboard() {
-    // state for tasks list
-    const [tasks, setTasks] = useState<Task[]>([]);
+    // state for tasks list - use functional initializer to retrieve from local storage or empty array
+    const [tasks, setTasks] = useState<Task[]>(() => {
+        return getLocal('storedTasks') || [];
+    });
+
+    // set local storage by listening for changes in [tasks] state variable
+    useEffect(() => {
+        // stringify the array of objects to be interpreted
+        setLocal('storedTasks', tasks);
+    }, [tasks]);
 
     // callback for adding task
     function addTask(newTask: Task) {
