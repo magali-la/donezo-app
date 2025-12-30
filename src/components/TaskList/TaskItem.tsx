@@ -1,6 +1,22 @@
-import type { TaskItemProps } from "../../types";
+import { useState } from "react";
+import { type TaskStatus, type TaskItemProps } from "../../types";
 
-export default function TaskItem({task: {id, title, desc, status, priority, dueDate }, onDelete}: TaskItemProps){
+export default function TaskItem({task: {id, title, desc, priority, dueDate }, onStatusChange, onDelete}: TaskItemProps){
+    // create status state
+    const [selectedStatus, setSelectedStatus] = useState<TaskStatus>('Pending');
+
+    // handler function to update state and run callback function from dashboard
+    function handleStatusChange(event: React.ChangeEvent<HTMLSelectElement>) {
+        // set variable with the value, assert union type for the values
+        const newStatus = event.target.value as TaskStatus;
+        console.log('User selected new status:', newStatus);
+        // update state
+        setSelectedStatus(newStatus);
+
+        // send arguments to callback function in dashboard
+        onStatusChange(id, newStatus)
+    }
+
     // create custom test colors based on priority status
     const priorityStyles = {
         high: 'bg-tomato drop-shadow-cream drop-shadow-2xl',
@@ -32,9 +48,10 @@ export default function TaskItem({task: {id, title, desc, status, priority, dueD
                 {/* status change buttons and delete button */}
                 <section className="flex flex-row gap-5" aria-label="change status or delete this task">
                     {/* status change dropdown */}
-                    <select value={status}>
-                        <option>Status 2</option>
-                        <option>Status 3</option>
+                    <select value={selectedStatus} onChange={handleStatusChange}>
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Completed">Completed</option>
                     </select>
                     {/* delete link/button */}
                     <button className="text-tomato font-semibold" onClick={() => onDelete(id)} role="button" aria-label="delete this task">Delete</button>
