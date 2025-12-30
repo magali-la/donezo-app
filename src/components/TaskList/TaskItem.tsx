@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { type TaskStatus, type TaskItemProps } from "../../types";
 
-export default function TaskItem({task: {id, title, desc, priority, dueDate }, onStatusChange, onDelete}: TaskItemProps){
+export default function TaskItem({task: {id, title, desc, status, priority, dueDate }, onStatusChange, onDelete}: TaskItemProps){
     // create status state
-    const [selectedStatus, setSelectedStatus] = useState<TaskStatus>('Pending');
+    const [selectedStatus, setSelectedStatus] = useState<TaskStatus>(status);
 
     // handler function to update state and run callback function from dashboard
     function handleStatusChange(event: React.ChangeEvent<HTMLSelectElement>) {

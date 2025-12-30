@@ -25,6 +25,16 @@ export default function Dashboard() {
     // callbacks for status change and delete
     function handleStatusChange(taskId: string, newStatus: TaskStatus) {
         console.log(`Changing status for ${taskId} to ${newStatus}`);
+
+        // use map to update state array - match the array item with the taskID that was sent up from the task item component
+        setTasks(prevTasks => prevTasks.map((task) => {
+            if (task.id === taskId){
+                console.log('found the matching task in the list', task.id);
+                return {...task, status: newStatus}
+            }
+            // otherwise do nothing to the other tasks
+            return task;
+        }));        
     }
 
     function handleDelete(taskId: string) {
