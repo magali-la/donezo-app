@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TaskForm from "../components/TaskForm/TaskForm";
 import TaskList from "../components/TaskList/TaskList";
-import type { Task, TaskStatus } from "../types";
+import type { Task, TaskFilters, TaskStatus } from "../types";
 import { getLocal, setLocal } from "../utils/localStorageUtils";
 import SearchBar from "../components/SearchFilter/SearchBar";
 
@@ -10,6 +10,9 @@ export default function Dashboard() {
     const [tasks, setTasks] = useState<Task[]>(() => {
         return getLocal('storedTasks') || [];
     });
+    // state for search and filters - defined here to be sent down to taskList as a filtered list
+    const [searchInput, setSearchInput] = useState<string>('');
+    const [selectedFilter, setSelectedFilter] = useState<TaskFilters>('All');
 
     // set local storage by listening for changes in [tasks] state variable
     useEffect(() => {
@@ -41,6 +44,18 @@ export default function Dashboard() {
     function handleDelete(taskId: string) {
         console.log(`Deleting task: ${taskId}`);
     }
+    
+    // update search input state from searchbar component
+    function handleSearchInput(userInput: string): void {
+        setSearchInput(userInput);
+        console.log('User search input changed to: ', userInput)
+    }
+
+    // update filter state from searchbar component
+    function handleFilter(newFilter: TaskFilters): void {
+        setSelectedFilter(newFilter);
+        console.log('Search filter changed to: ', newFilter);
+    }
 
     return (
         <div>
@@ -48,7 +63,12 @@ export default function Dashboard() {
                 addTask={addTask}
             />
             <h2>Search and Filter Tasks</h2>
-            <SearchBar/>
+            <SearchBar
+                searchInput={searchInput}
+                searchFilter={selectedFilter}
+                onSearchChange={handleSearchInput}
+                onFilterChange={handleFilter}
+            />
             <TaskList
                 tasks={tasks}
                 onStatusChange={handleStatusChange}

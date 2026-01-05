@@ -30,3 +30,11 @@ export interface TaskItemProps {
 export interface TaskFormProps {
     addTask: (task: Task) => void;
 }
+
+// interface for props for searchfilter component - pass callbacks from dashboard to control the tasks filtered in the list component
+export interface SearchBarProps {
+    searchInput: string;
+    searchFilter: TaskFilters;
+    onSearchChange: (userInput: string) => void;
+    onFilterChange: (newFilter: TaskFilters) => void;
+}
