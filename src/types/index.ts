@@ -1,5 +1,6 @@
 // define type for task status
 export type TaskStatus = 'Pending' | 'In Progress' | 'Completed';
+export type TaskFilters = 'All' | 'Pending' | 'In Progress' | 'Completed';
 
 // create interface for task info
 export interface Task {

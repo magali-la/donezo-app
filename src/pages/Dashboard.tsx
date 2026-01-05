@@ -3,6 +3,7 @@ import TaskForm from "../components/TaskForm/TaskForm";
 import TaskList from "../components/TaskList/TaskList";
 import type { Task, TaskStatus } from "../types";
 import { getLocal, setLocal } from "../utils/localStorageUtils";
+import SearchBar from "../components/SearchFilter/SearchBar";
 
 export default function Dashboard() {
     // state for tasks list - use functional initializer to retrieve from local storage or empty array
@@ -46,6 +47,8 @@ export default function Dashboard() {
             <TaskForm 
                 addTask={addTask}
             />
+            <h2>Search and Filter Tasks</h2>
+            <SearchBar/>
             <TaskList
                 tasks={tasks}
                 onStatusChange={handleStatusChange}
