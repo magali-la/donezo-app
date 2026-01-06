@@ -14,6 +14,9 @@ export default function Dashboard() {
     const [searchInput, setSearchInput] = useState<string>('');
     const [selectedFilter, setSelectedFilter] = useState<TaskFilters>('All');
 
+    // state for filteredTasks list - used for display in the list
+    const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);
+
     // set local storage by listening for changes in [tasks] state variable
     useEffect(() => {
         // stringify the array of objects to be interpreted
@@ -57,6 +60,14 @@ export default function Dashboard() {
         console.log('Search filter changed to: ', newFilter);
     }
 
+    // listen for changes to tasks, searchInput or selectedFilter to update filter and search logic and pass it down to the task list
+    useEffect(() => {
+        // create a new variable with the filtered tasks    
+        const newFilteredTasks = tasks.filter(task => (selectedFilter === 'All' || task.status === selectedFilter) && (task.title.includes(searchInput) || task.desc.includes(searchInput)));
+        // use setter function
+        setFilteredTasks(newFilteredTasks);
+    }, [searchInput, selectedFilter, tasks]);
+
     return (
         <div>
             <TaskForm 
@@ -70,7 +81,7 @@ export default function Dashboard() {
                 onFilterChange={handleFilter}
             />
             <TaskList
-                tasks={tasks}
+                tasks={filteredTasks}
                 onStatusChange={handleStatusChange}
                 onDelete={handleDelete}
             />
