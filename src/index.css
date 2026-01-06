@@ -19,7 +19,7 @@
 }
 
 html {
-  @apply font-josefin;
+  @apply font-josefin bg-cream scroll-smooth;
 }
 
 /* input type text */

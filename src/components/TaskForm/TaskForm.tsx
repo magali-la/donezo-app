@@ -41,8 +41,8 @@ export default function TaskForm({addTask}: TaskFormProps) {
     }
 
     return (
-        <form className="flex flex-col gap-4 py-8 px-8 md:px-10 sm:w-[50vw] bg-banana rounded-2xl border-3 border-shadow" onSubmit={handleSubmit} aria-label="add a new task to your list">
-            <h2 className="text-2xl font-semibold">Add a Task</h2>
+        <form id="addATask" className="flex flex-col gap-2 py-4 px-6 md:px-10 sm:w-[50vw] bg-banana rounded-2xl border-3 border-shadow self-center scroll-m-28" onSubmit={handleSubmit} aria-label="add a new task to your list">
+            <h2 className="text-xl font-semibold self-center">Add a Task</h2>
             {/* title input */}
             <label htmlFor="taskTitle" className="font-medium">Task Title</label>
             <input type="text" id="taskTitle" value={title} onChange={(event) => setTitle(event.target.value)}/>

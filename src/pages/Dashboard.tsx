@@ -71,11 +71,26 @@ export default function Dashboard() {
     }, [searchInput, selectedFilter, tasks]);
 
     return (
-        <div>
+        <div className="flex flex-col gap-8 mb-6">
+            <nav className="bg-plum w-fit flex flex-row items-center border-3 border-shadow text-cream rounded-3xl gap-16 px-6 py-5 self-center sticky top-2 z-500">
+                <a href="#" className="text-2xl font-extrabold">donezo</a>
+                <div className="text-lg font-semibold flex flex-row gap-9">
+                    <a href="#addATask">Add</a>
+                    <a href="#yourTasks">All Tasks</a>
+                </div>
+            </nav>
+            <section aria-label="hero section" className="h-[30vh] flex flex-col justify-center items-center">
+                <h1 className="text-6xl font-black text-shadow">Welcome to donezo!</h1>
+                <h3 className="text-xl text-shadow/70 font-semibold">A simple task manager to motivate you to finish what you start!</h3>
+                <a href="#" className=""></a>
+            </section>
             <TaskForm 
                 addTask={addTask}
             />
-            <h2>Search and Filter Tasks</h2>
+            <div className="self-center flex flex-col gap-2 justify-center items-center">
+                <h2 className="text-3xl font-bold scroll-m-28" id="yourTasks">Your Tasks</h2>
+                <h3 className="text-xl text-shadow/70 font-semibold">Organize, prioritize, and move forward!</h3>
+            </div>
             <SearchBar
                 searchInput={searchInput}
                 searchFilter={selectedFilter}

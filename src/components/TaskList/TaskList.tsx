@@ -17,7 +17,7 @@ export default function TaskList({ tasks, onStatusChange, onDelete}: TaskListPro
                     />
                 ))
             ) : (
-                <p>No tasks yet. Let's get motivated!</p>
+                <p className="text-xl font-semibold text-shadow/70 italic">No tasks yet. Let's get motivated!</p>
             )}
         </div>
     )
