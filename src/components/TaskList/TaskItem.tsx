@@ -54,7 +54,7 @@ export default function TaskItem({task: {id, title, desc, status, priority, dueD
                         <option value="Completed">Completed</option>
                     </select>
                     {/* delete link/button */}
-                    <button className="text-tomato font-semibold" onClick={() => onDelete(id)} role="button" aria-label="delete this task">Delete</button>
+                    <button className="text-tomato font-semibold cursor-pointer hover:font-bold" onClick={() => onDelete(id)} role="button" aria-label="delete this task">Delete</button>
                 </section>
             </section>
             {/* details section */}

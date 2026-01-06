@@ -46,6 +46,8 @@ export default function Dashboard() {
 
     function handleDelete(taskId: string) {
         console.log(`Deleting task: ${taskId}`);
+        // filter everything that isn't the clicked taskID / key of the list item clicked being passed up
+        setTasks(tasks.filter(task => task.id !== taskId));
     }
     
     // update search input state from searchbar component
