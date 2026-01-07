@@ -78,7 +78,7 @@ Donezo was designed with the goal of motivating users who struggle with daily pr
 ### Assets used
 * [StoryTale Thursday Pack](https://storytale.io/pack/294)
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/SqfXpZNaWTyG7iycnPyG1N/SBA-9---Task-Manager-Dashboard?node-id=0-1&embed-host=share" allowfullscreen></iframe>
+<img src="./public/donezofigma.png" alt="image of Figma file with high fidelity wireframe including hero version and dashboard version" style="width: 40rem"/>
 
 ## <a name="reflections"></a>Project Reflections
 ### <a name="implement"></a>Implementing TypeScript
