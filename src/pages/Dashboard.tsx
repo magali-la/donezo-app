@@ -72,24 +72,27 @@ export default function Dashboard() {
 
     return (
         <div className="flex flex-col gap-8 mb-6">
-            <nav className="bg-plum w-fit flex flex-row items-center border-3 border-shadow text-cream rounded-3xl gap-16 px-6 py-5 self-center sticky top-2 z-500">
+            <nav className="bg-plum w-fit max-w-full flex flex-row items-center border-3 border-shadow text-cream rounded-3xl gap-8 sm:gap-12 md:gap-16 px-6 py-5 self-center sticky top-2 z-500">
                 <a href="#" className="text-2xl font-extrabold">donezo</a>
-                <div className="text-lg font-semibold flex flex-row gap-9">
+                <div className="text-lg font-semibold flex flex-row gap-4 md:gap-9">
                     <a href="#addATask">Add</a>
                     <a href="#yourTasks">All Tasks</a>
                 </div>
             </nav>
-            <section aria-label="hero section" className="h-[30vh] flex flex-col justify-center items-center">
-                <h1 className="text-6xl font-black text-shadow">Welcome to donezo!</h1>
-                <h3 className="text-xl text-shadow/70 font-semibold">A simple task manager to motivate you to finish what you start!</h3>
-                <a href="#" className=""></a>
+            <section aria-label="hero section" className="h-fit flex flex-col md:flex-row justify-between items-center mx-[5vw] md:mx-[15vw]">
+                <div className="flex flex-col gap-5 text-center">
+                    <h1 className="text-6xl font-black text-shadow">Welcome to donezo!</h1>
+                    <h3 className="text-xl text-shadow/70 font-semibold">Turn everyday tasks into missions worth completing!</h3>
+                    <a href="#addATask" role="button" className="w-fit py-2 px-6 bg-sage/80 hover:bg-sage hover:text-shadow-2xs hover:text-shadow-shadow/40 rounded-2xl transition-all duration-500 cursor-pointer self-center">Start Mission</a>
+                </div>
+                <img src="/astro.svg" alt="illustration of an astronaut with a computer, notebook, and pen floating" className="w-[75%] md:w-[40%]"/>
             </section>
             <TaskForm 
                 addTask={addTask}
             />
-            <div className="self-center flex flex-col gap-2 justify-center items-center">
+            <div className="self-center flex flex-col gap-2 justify-center items-center text-center">
                 <h2 className="text-3xl font-bold scroll-m-28" id="yourTasks">Your Tasks</h2>
-                <h3 className="text-xl text-shadow/70 font-semibold">Organize, prioritize, and move forward!</h3>
+                <h3 className="text-xl text-shadow/70 font-semibold">Track your missions and move forward!</h3>
             </div>
             <SearchBar
                 searchInput={searchInput}

@@ -41,7 +41,7 @@ export default function TaskForm({addTask}: TaskFormProps) {
     }
 
     return (
-        <form id="addATask" className="flex flex-col gap-2 py-4 px-6 md:px-10 sm:w-[50vw] bg-banana rounded-2xl border-3 border-shadow self-center scroll-m-28" onSubmit={handleSubmit} aria-label="add a new task to your list">
+        <form id="addATask" className="flex flex-col gap-2 py-4 px-6 md:px-10 max-w-full w-[98vw] sm:w-[70vw] md:w-[60vw] bg-banana rounded-2xl border-3 border-shadow self-center scroll-m-28" onSubmit={handleSubmit} aria-label="add a new task to your list">
             <h2 className="text-xl font-semibold self-center">Add a Task</h2>
             {/* title input */}
             <label htmlFor="taskTitle" className="font-medium">Task Title</label>
@@ -66,7 +66,7 @@ export default function TaskForm({addTask}: TaskFormProps) {
                 </label>
             </div>
             {/* add button */}
-            <button type="submit" role="button" className="w-fit py-2 px-6 bg-plum/80 hover:bg-plum rounded-2xl transition-colors duration-500 cursor-pointer">Add Task</button>
+            <button type="submit" role="button" className="w-fit py-2 px-6 bg-plum/80 hover:bg-plum hover:text-shadow-2xs hover:text-shadow-shadow/40 rounded-2xl transition-all duration-500 cursor-pointer self-center">Add Task</button>
         </form>
     )
 }
